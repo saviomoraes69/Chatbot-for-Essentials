@@ -1,0 +1,839 @@
+{
+  "intents": [
+    {
+      "intent": "Enquiry",
+      "examples": [
+        {
+          "text": "Please provide Vegetable Price."
+        },
+        {
+          "text": "What are the items available today?"
+        },
+        {
+          "text": "What are the offers available?"
+        },
+        {
+          "text": "What are the Special Vegetables available today"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Greetings",
+      "examples": [
+        {
+          "text": "Good Afternoon"
+        },
+        {
+          "text": "Good Evening"
+        },
+        {
+          "text": "Good Morning"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hi"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Order",
+      "examples": [
+        {
+          "text": "Can you please take the order"
+        },
+        {
+          "text": "I want to place an order"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "email",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "email",
+          "patterns": [
+            "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Enquiry",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Items",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Offers",
+          "synonyms": [
+            "deals",
+            "discounts"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Price",
+          "synonyms": [
+            "Cost"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Specials",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Greetings",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Good Afternoon",
+          "synonyms": [
+            "GA",
+            "gud aftn"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Good Evening",
+          "synonyms": [
+            "GE",
+            "gud evng"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Good Morning",
+          "synonyms": [
+            "GM",
+            "gud mrng"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Items",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Broccoli",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Chinese Cabbage",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Mushroom",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Onion",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Potato",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Tomato",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "mobile",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "mobile",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Order",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Order",
+          "synonyms": [
+            "Buy"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Payment",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Card",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "COD",
+          "synonyms": [
+            "Cash On Delivery"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "UPI",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "Special",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Broccoli",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Chinese Cabbage",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Mushroom",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": []
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_8_1603216847817",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_8_1603216847817",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1603217115566",
+      "previous_sibling": "node_6_1603218900829"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1603217116377",
+      "context": {
+        "items": "@Items"
+      },
+      "conditions": "@Items",
+      "event_name": "input",
+      "dialog_node": "handler_4_1603217116397"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1603218202605",
+      "context": {
+        "number": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_5_1603218202610"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "We accept COD/Card/UPI. . .What is your mode of payment???"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_1_1603218280815",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1603218280820",
+      "previous_sibling": "handler_9_1603218280820"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please share your mobile number"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_7_1603524321795",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1603524321829",
+      "previous_sibling": "handler_8_1603524321829"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Can you specify the item you want"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_2_1603217116377",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1603217116397",
+      "previous_sibling": "handler_4_1603217116397"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_7_1603524321795",
+      "context": {
+        "mobile": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_8_1603524321829"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "How many do you want"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_4_1603218202605",
+      "event_name": "focus",
+      "dialog_node": "handler_9_1603218202610",
+      "previous_sibling": "handler_5_1603218202610"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_1_1603218280815",
+      "context": {
+        "Payment": "@Payment"
+      },
+      "conditions": "@Payment",
+      "event_name": "input",
+      "dialog_node": "handler_9_1603218280820"
+    },
+    {
+      "type": "standard",
+      "title": "email",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank You for sharing your mail id. Your mail id $email will be used for further references"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "context": {
+        "email": "@email.literal"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "condition",
+        "dialog_node": "node_7_1603523841611"
+      },
+      "conditions": "@email",
+      "dialog_node": "node_2_1603509467520"
+    },
+    {
+      "type": "standard",
+      "title": "Greetings",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#Greetings || @Greetings",
+      "dialog_node": "node_6_1601526114008",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Special",
+      "parent": "node_8_1601529368931",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@Special",
+      "dialog_node": "node_6_1603214895862"
+    },
+    {
+      "type": "standard",
+      "title": "Deleting Context",
+      "output": {
+        "deleted": "<?context.remove('items')?><?context.remove('number')?><?context.remove('Payment')?><?context.remove('email')?><?context.remove('mobile')?>",
+        "generic": [
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1603216847817",
+      "context": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "Welcome"
+      },
+      "conditions": "true",
+      "dialog_node": "node_6_1603218900829"
+    },
+    {
+      "type": "frame",
+      "title": "Mobile",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank you for sharing your mobile number. Your Mobile Number $mobile will be used for future communications. . . Please browse through our items list, special offers and our specials for the day . . . Happy Shopping"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "conditions": "true",
+      "dialog_node": "node_7_1603523841611",
+      "previous_sibling": "node_2_1603509467520"
+    },
+    {
+      "type": "standard",
+      "title": "Enquiry",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#Enquiry || @Enquiry",
+      "digress_in": "returns",
+      "dialog_node": "node_8_1601529368931",
+      "digress_out": "allow_all_never_return",
+      "previous_sibling": "node_6_1601526114008"
+    },
+    {
+      "type": "frame",
+      "title": "Order",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank You . . . Your Order of $number  Kg $items is placed. Please pay using $Payment. Details of total bill and link for payment [in case of UPI or Card Payment] will be sent to your email id $email and Mobile Number $mobile"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "#Order && @Order",
+      "digress_in": "returns",
+      "dialog_node": "node_8_1603216847817",
+      "digress_out": "allow_all",
+      "previous_sibling": "node_8_1601529368931",
+      "digress_out_slots": "allow_returning"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "title": "Special Vegetables",
+            "options": [
+              {
+                "label": "Broccoli",
+                "value": {
+                  "input": {
+                    "text": "Broccoli"
+                  }
+                }
+              },
+              {
+                "label": "Mushroom",
+                "value": {
+                  "input": {
+                    "text": "Mushroom"
+                  }
+                }
+              },
+              {
+                "label": "Chinese Cabbage",
+                "value": {
+                  "input": {
+                    "text": "Chinese Cabbage"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          },
+          {
+            "values": [],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1601529368931",
+      "conditions": "@Enquiry:Specials",
+      "dialog_node": "response_1_1603175421148",
+      "previous_sibling": "response_8_1603174200488"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Rs. 200/-per Kg"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1603214895862",
+      "conditions": "@Special:Mushroom",
+      "dialog_node": "response_2_1603215073163",
+      "previous_sibling": "response_9_1603215013795"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Goode Evening"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1601526114008",
+      "conditions": "@Greetings:(Good Evening)",
+      "dialog_node": "response_3_1601527730299",
+      "previous_sibling": "response_8_1601527692696"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Rs. 150/- per Kg"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1603214895862",
+      "conditions": "@Special:(Chinese Cabbage)",
+      "dialog_node": "response_3_1603215113933",
+      "previous_sibling": "response_2_1603215073163"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Good Morning"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1601526114008",
+      "conditions": "@Greetings:(Good Morning)",
+      "dialog_node": "response_6_1601526974530"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "title": "Price List",
+            "source": "http://thehimalayantimes.com/wp-content/uploads/2016/05/Vegetables-prices.jpg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "node_8_1601529368931",
+      "conditions": "@Enquiry:Price",
+      "dialog_node": "response_7_1603814340698",
+      "previous_sibling": "response_1_1603175421148"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Good Afternoon"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1601526114008",
+      "conditions": "@Greetings:(Good Afternoon)",
+      "dialog_node": "response_8_1601527692696",
+      "previous_sibling": "response_6_1601526974530"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1601526114008",
+      "conditions": "anything_else",
+      "dialog_node": "response_8_1601527895379",
+      "previous_sibling": "response_3_1601527730299"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "source": "https://i.pinimg.com/564x/02/75/e0/0275e0e09b5f84a647fa5dd8e90cda8c.jpg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "parent": "node_8_1601529368931",
+      "conditions": "@Enquiry:Items",
+      "dialog_node": "response_8_1603174200488",
+      "previous_sibling": "response_9_1601532231713"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "We are having 10 % off on non leafy vegetables today"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "We are having 15 % discount on leafy vegetables"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_8_1601529368931",
+      "conditions": "@Enquiry:Offers",
+      "dialog_node": "response_9_1601532231713",
+      "previous_sibling": "node_6_1603214895862"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Rs. 250/-per Kg"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1603214895862",
+      "conditions": "@Special:Broccoli",
+      "dialog_node": "response_9_1603215013795"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_8_1603216847817",
+      "variable": "$Payment",
+      "dialog_node": "slot_1_1603218280815",
+      "previous_sibling": "slot_4_1603218202605"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_8_1603216847817",
+      "variable": "$items",
+      "dialog_node": "slot_2_1603217116377",
+      "previous_sibling": "handler_1_1603217115566"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_8_1603216847817",
+      "variable": "$number",
+      "dialog_node": "slot_4_1603218202605",
+      "previous_sibling": "slot_2_1603217116377"
+    },
+    {
+      "type": "slot",
+      "parent": "node_7_1603523841611",
+      "variable": "$mobile",
+      "dialog_node": "slot_7_1603524321795"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. I am a Grocery Store bot here to help you shop. I can provide you with the list of Available Items and their Prices. I can also keep you updated on the latest Offers and Specials of the day. When you want to place an Order just let me know!!! \n\nBut first I would like to know a little more about you. . . Can you please share your name and email id."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "My first skill",
+  "language": "en",
+  "description": ""
+}
